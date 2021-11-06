@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 public class Country {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private int country_id;
     private String country;
