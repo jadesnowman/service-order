@@ -32,16 +32,20 @@ public class CountryController {
     @PostMapping("/countries")
     @ResponseBody
     public Country store(@RequestBody Country param) {
-
-        countryRepository.save(param);
-
-        return param;
+        return countryRepository.save(param);
     }
 
     @GetMapping("/countries/{id}")
     @ResponseBody
     public Country show(@PathVariable int id) {
         return countryRepository.findById(id).get();
+    }
+
+    @PutMapping("/countries/{id}")
+    @ResponseBody
+    public Country update(@RequestBody Country param, @PathVariable int id) {
+        param.setCountry_id(id);
+        return countryRepository.save(param);
     }
 
     @DeleteMapping("/countries/{id}")
@@ -55,12 +59,5 @@ public class CountryController {
         success.put("message", "Data successfully deleted");
 
         return success;
-    }
-
-    @PutMapping("/countries/{id}")
-    @ResponseBody
-    public Country update(@RequestBody Country param, @PathVariable int id) {
-        param.setCountry_id(id);
-        return countryRepository.save(param);
     }
 }
