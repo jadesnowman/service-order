@@ -1,4 +1,4 @@
-package com.microservice.serviceorder;
+package com.microservice.serviceorder.controllers;
 
 import com.microservice.serviceorder.models.Country;
 import com.microservice.serviceorder.repositories.CountryRepository;
