@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -54,5 +55,12 @@ public class CountryController {
         success.put("message", "Data successfully deleted");
 
         return success;
+    }
+
+    @PutMapping("/countries/{id}")
+    @ResponseBody
+    public Country update(@RequestBody Country param, @PathVariable int id) {
+        param.setCountry_id(id);
+        return countryRepository.save(param);
     }
 }
